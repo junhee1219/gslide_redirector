@@ -68,7 +68,7 @@
                 }
                 return response.json();
             })
-            .then(data => { alert(1); alert(data);
+            .then(data => {
                 index = Math.floor(Math.random() * data.length);
                 document.getElementById('title').textContent = data[index].title;
                 document.getElementById('content').textContent = data[index].content;
