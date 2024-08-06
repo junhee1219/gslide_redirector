@@ -10,6 +10,8 @@
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
             const path = window.location.pathname;
+            console.log(path);
+            alert(path);
             const pathParts = path.split('/');
             const id = pathParts[1];
             const redirectUrl = `https://docs.google.com/presentation/d/1dm6ckTcfeIU6eoHAmRcLCBbrp0cuPvtSQGK1S-Lizko/edit#slide=id.${id}`;
