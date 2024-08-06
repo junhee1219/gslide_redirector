@@ -63,18 +63,18 @@
         fetch('https://raw.githubusercontent.com/junhee1219/gslide_redirector/main/data.json')
             .then(response => {
                 if (!response.ok) {
+                    alert(response);
                     throw new Error('Network response was not ok');
                 }
                 return response.json();
             })
-            .then(data => {
+            .then(data => { alert(1); alert(data);
                 index = Math.floor(Math.random() * data.length);
                 document.getElementById('title').textContent = data[index].title;
                 document.getElementById('content').textContent = data[index].content;
             })
             .catch(error => {
                 alert(error);
-                console.log(error);
             });
 
         const path = window.location.pathname;
