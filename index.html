@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
         body, html {
             height: 100%;
@@ -14,6 +15,16 @@
             align-items: center;
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        .content{
+            position: relative;
+            width: 100%;
+            height: 100vh; /* 화면 전체 높이 */
+            display: flex;
+            justify-content: center; /* 수평 중앙 정렬 */
+            align-items: center; /* 수직 중앙 정렬 */
+            flex-direction: column; /* 세로로 정렬 */
         }
         .loader {
             border: 16px solid #f3f3f3;
@@ -30,23 +41,43 @@
         .message {
             text-align: center;
             margin-top: 50px;
-            font-size: 2em;
+            font-size: 2rem;
             color: #555;
+        }
+        #title{
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <div class="content">
+  <div class="content">
         <div class="loader"></div>
-        <div class="message">Loading, please wait...</div>
+        <div class="message" id = "title">Loading, please wait...</div>
+        <div class="message" id = "content"></div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const redirectUrl = 'https://docs.google.com/presentation/d/1dm6ckTcfeIU6eoHAmRcLCBbrp0cuPvtSQGK1S-Lizko/edit#slide=id.p';
-            setTimeout(() => {
-                window.location.href = redirectUrl;
-            }, 3000); // 3초 후 리디렉션
-        });
-    </script>
 </body>
 </html>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        let index;
+        fetch('data.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                index = Math.floor(Math.random() * data.length);
+                document.getElementById('title').textContent = data[index].title;
+                document.getElementById('content').textContent = data[index].content;
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        const redirectUrl = 'https://docs.google.com/presentation/d/1dm6ckTcfeIU6eoHAmRcLCBbrp0cuPvtSQGK1S-Lizko/edit#slide=id';
+        window.location.href = redirectUrl;
+    });
+
+
+</script>
