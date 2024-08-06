@@ -60,7 +60,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         let index;
-        fetch('data.json')
+        fetch('https://raw.githubusercontent.com/junhee1219/gslide_redirector/main/data.json')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
