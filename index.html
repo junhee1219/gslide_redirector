@@ -54,30 +54,31 @@
         <div class="loader"></div>
         <div class="message" id = "title">Loading, please wait...</div>
         <div class="message" id = "content"></div>
+        <a href = "./test.html">눌러봐용</a>
     </div>
 </body>
 </html>
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        let index;
-        fetch('https://raw.githubusercontent.com/junhee1219/gslide_redirector/main/data.json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                index = Math.floor(Math.random() * data.length);
-                document.getElementById('title').textContent = data[index].title;
-                document.getElementById('content').textContent = data[index].content;
-            })
-            .catch(error => {
-                console.log(error);
-            });
-        const redirectUrl = 'https://docs.google.com/presentation/d/1dm6ckTcfeIU6eoHAmRcLCBbrp0cuPvtSQGK1S-Lizko/edit#slide=id';
-        window.location.href = redirectUrl;
-    });
+    // document.addEventListener('DOMContentLoaded', () => {
+    //     let index;
+    //     fetch('https://raw.githubusercontent.com/junhee1219/gslide_redirector/main/data.json')
+    //         .then(response => {
+    //             if (!response.ok) {
+    //                 throw new Error('Network response was not ok');
+    //             }
+    //             return response.json();
+    //         })
+    //         .then(data => {
+    //             index = Math.floor(Math.random() * data.length);
+    //             document.getElementById('title').textContent = data[index].title;
+    //             document.getElementById('content').textContent = data[index].content;
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //         });
+    //     const redirectUrl = 'https://docs.google.com/presentation/d/1dm6ckTcfeIU6eoHAmRcLCBbrp0cuPvtSQGK1S-Lizko/edit#slide=id';
+    //     window.location.href = redirectUrl;
+    // });
 
 
 </script>
